@@ -1,0 +1,38 @@
+# NOTE: This file is documentation/reference only — no code in this repo
+# currently loads configs/config.yaml. The real runtime model config comes
+# from the `cfg` dict embedded inside each checkpoint (see
+# PerceptionAgent._load_model in perception/perception_agent.py), and the
+# Jensen Gain thresholds are hardcoded as class constants in
+# perception/models/jensen_gain.py (JensenGainMonitor.HIGH_CONFIDENCE_THRESH
+# / MODERATE_THRESH). The values below are kept in sync with those two
+# sources by hand; if you change either, update this file too.
+
+hopf_grid:
+  n_elevation: 64
+  n_inplane: 16
+  total_anchors: 1024
+  expected_mean_gap_deg: 11.75
+  expected_max_gap_deg: 21.17
+
+pose_head:
+  lambda_fine: 10.0
+  translation_loss: smooth_l1
+  classification_loss: cross_entropy
+
+jensen_gain:
+  n_rotations: 16
+  # Degrees. Must match JensenGainMonitor.HIGH_CONFIDENCE_THRESH /
+  # MODERATE_THRESH in perception/models/jensen_gain.py.
+  high_confidence_thresh_deg: 25.0
+  moderate_thresh_deg: 40.0
+
+model:
+  # Only backbones actually implemented in perception/models/pose_model.py
+  # are valid here: 'efficientnet_b3' (SpacecraftPoseModel, the default
+  # used by PerceptionAgent when a checkpoint doesn't specify one) or
+  # 'resnet50' (PoseNet_ResNet50). There is no ViT implementation in this
+  # codebase — 'vit_small' etc. will fail to load: the neck layer that
+  # follows the backbone has hardcoded input width (1536, EfficientNet-B3's
+  # feature size) and does not adapt to a ViT's feature width.
+  backbone: efficientnet_b3
+  neck_hidden_dims: [512, 256]
