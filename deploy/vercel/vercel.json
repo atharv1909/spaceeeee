@@ -1,9 +1,13 @@
 {
-  "buildCommand": null,
-  "outputDirectory": ".",
-  "framework": null,
+  "version": 2,
   "rewrites": [
-    { "source": "/api/:path*", "destination": "https://Atharv1909-spaceeeee.hf.space/api/:path*" },
-    { "source": "/ws", "destination": "https://Atharv1909-spaceeeee.hf.space/ws" }
+    {
+      "source": "/api/(.*)",
+      "destination": "https://AtharvDeshmukh-spaceeeee1.hf.space/api/$1"
+    },
+    {
+      "source": "/ws",
+      "destination": "https://AtharvDeshmukh-spaceeeee1.hf.space/ws"
+    }
   ]
 }
