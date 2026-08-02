@@ -9,6 +9,37 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+<!-- INTRO OVERLAY                                                      -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div id="intro-overlay" onclick="launchRocket()">
+    <!-- Rotating HUD Rings -->
+    <div class="hud-ring ring-1"></div>
+    <div class="hud-ring ring-2"></div>
+    <div class="hud-ring ring-3"></div>
+
+    <div class="intro-content">
+        <div class="rocket" id="intro-rocket">
+            <svg class="rocket-svg" id="rocket-svg" viewBox="0 0 100 250" xmlns="http://www.w3.org/2000/svg">
+              <!-- Flame -->
+              <path id="flame" d="M50,210 Q35,270 50,260 Q65,270 50,210" fill="#f59e0b" opacity="0"/>
+              <!-- Main Body -->
+              <path d="M50,10 C50,10 30,50 30,150 L30,200 L70,200 L70,150 C70,50 50,10 50,10 Z" fill="#e2e8f0"/>
+              <!-- Nose cone -->
+              <path d="M50,10 C50,10 30,50 30,70 L70,70 C70,50 50,10 50,10 Z" fill="#ef4444"/>
+              <!-- Stripes -->
+              <rect x="30" y="70" width="40" height="20" fill="#1e293b"/>
+              <rect x="30" y="130" width="40" height="15" fill="#1e293b"/>
+              <!-- Window -->
+              <circle cx="50" cy="100" r="10" fill="#0a0e17" stroke="#334155" stroke-width="2"/>
+              <!-- Fins -->
+              <path d="M30,160 L5,210 L30,200 Z" fill="#ef4444"/>
+              <path d="M70,160 L95,210 L70,200 Z" fill="#ef4444"/>
+              <!-- Engine -->
+              <path d="M40,200 L60,200 L65,215 L35,215 Z" fill="#475569"/>
+            </svg>
+        </div>
+        <div class="intro-text" style="margin-top: 50px;">CLICK TO INITIATE MISSION</div>
+    </div>
 
 <nav class="navbar">
     <a href="index.html" class="navbar-brand">
@@ -35,6 +66,31 @@
         <h1 style="font-weight:700;font-size:32px;color:var(--text);margin-bottom:8px;">Mission Control Dashboard</h1>
         <p style="color:var(--muted);font-size:16px;">Real-time monitoring and orchestration of spacecraft autonomy sub-systems.</p>
     </header>
+
+    
+<div class="controls-bar">
+    <span class="ctrl-label">System</span>
+    <div class="ctrl-group">
+        <button class="btn success" id="btn-start" onclick="startOrch()">▶ Start Orchestrator</button>
+        <button class="btn danger" id="btn-stop" onclick="stopOrch()" disabled>■ Stop</button>
+    </div>
+    <div class="ctrl-sep"></div>
+    <span class="ctrl-label">Scenario</span>
+    <div class="ctrl-group">
+        <select id="scenario-select" style="background:var(--panel);color:var(--text);border:1px solid var(--border);padding:6px;border-radius:4px;">
+            <option value="nominal">Nominal Docking</option>
+            <option value="thermal">Thermal Anomaly</option>
+            <option value="perception">Perception Challenge</option>
+            <option value="perfect_storm">Perfect Storm</option>
+        </select>
+        <button class="btn" id="btn-scenario" onclick="runScenario()">Run</button>
+    </div>
+    <div class="ctrl-sep"></div>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:10px;">
+        <span class="ctrl-label" id="stat-events-label">Events: <span id="stat-events" style="color:var(--text);">0</span></span>
+        <span class="ctrl-label">Scenario: <span id="stat-scenario" style="color:var(--text);">—</span></span>
+    </div>
+</div>
 
     <div class="grid-3">
         <!-- System Status Summary -->

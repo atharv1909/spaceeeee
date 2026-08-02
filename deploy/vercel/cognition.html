@@ -34,8 +34,15 @@
     </header>
 
     <div class="grid-2">
-        <div class="panel">
-            <div class="panel-title">Current State Evaluation</div>
+        
+        <div style="display:flex; flex-direction:column; gap:24px;">
+            <div class="panel agent-panel" id="panel-cog">
+        <div class="panel-title"><span class="phase-badge phase-cog">P2</span> Cognition Agent · HDC</div>
+            <div class="panel">
+        <div class="panel-title"><span class="phase-badge" style="background:var(--cyan-dim);color:var(--cyan);">AI</span> Conversational AI</div>
+        <div id="chat-log"></div>
+        </div>
+
             <div id="cog-data">
                 <div class="data-row"><span class="lbl">Recommended Action</span><span class="val" id="cog-rec" style="color:var(--orange)">—</span></div>
             </div>
