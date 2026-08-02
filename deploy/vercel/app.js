@@ -10,7 +10,7 @@ let jensenChart = null;
 let anomalyChart = null;
 let actionChart = null;
 
-const WS_URL = location.protocol === "https:" ? "wss://" + location.host + "/ws" : "ws://" + location.host + "/ws";
+const WS_URL = "wss://mod-pork-healthy-optics.trycloudflare.com/ws";
 
 function initApp() {
     connectWS();
