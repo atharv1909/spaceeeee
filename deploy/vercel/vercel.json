@@ -3,11 +3,11 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://superably-nonargumentative-dotty.ngrok-free.dev/api/$1"
+      "destination": "https://recruiting-villa-afford-characters.trycloudflare.com/api/$1"
     },
     {
       "source": "/ws/(.*)",
-      "destination": "https://superably-nonargumentative-dotty.ngrok-free.dev/ws/$1"
+      "destination": "https://recruiting-villa-afford-characters.trycloudflare.com/ws/$1"
     }
   ]
 }
