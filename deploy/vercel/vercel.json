@@ -3,11 +3,11 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://recruiting-villa-afford-characters.trycloudflare.com/api/$1"
+      "destination": "https://injection-foo-caused-payday.trycloudflare.com/api/$1"
     },
     {
       "source": "/ws/(.*)",
-      "destination": "https://recruiting-villa-afford-characters.trycloudflare.com/ws/$1"
+      "destination": "https://injection-foo-caused-payday.trycloudflare.com/ws/$1"
     }
   ]
 }
