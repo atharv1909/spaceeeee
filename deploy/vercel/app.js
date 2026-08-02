@@ -25,11 +25,13 @@ function connectWS() {
     ws = new WebSocket(WS_URL);
     ws.onopen = () => {
         wsConnected = true;
+        setServerStatus("live", "Live");
         updateDot("dot-ws", "on");
         addLog("SYSTEM", "WebSocket connected");
     };
     ws.onclose = () => {
         wsConnected = false;
+        setServerStatus("offline", "Offline");
         updateDot("dot-ws", "off");
         addLog("SYSTEM", "WebSocket disconnected — reconnecting in 3s…");
         setTimeout(connectWS, 3000);
@@ -179,6 +181,27 @@ function updateDot(id, state) {
     if (el) el.className = "dot " + state;
 }
 
+function setServerStatus(stateClass, text) {
+    document.querySelectorAll(".server-status").forEach(el => {
+        el.className = "server-status " + stateClass;
+        el.innerHTML = `<div class="indicator"></div> ${text}`;
+    });
+}
+
+// Wakeup call logic for HF Spaces
+async function triggerWakeup() {
+    setServerStatus("waking", "Waking Up…");
+    try {
+        await fetch("/api/status", { method: "HEAD" });
+    } catch (e) {
+        // Will be handled by ws.onopen when it eventually connects
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    triggerWakeup();
+    initApp();
+});
 function addLog(channel, text) {
     const el = document.getElementById("event-log");
     if (!el) return;
@@ -190,6 +213,3 @@ function addLog(channel, text) {
     el.scrollTop = el.scrollHeight;
     while (el.children.length > 100) el.removeChild(el.firstChild);
 }
-
-// Start app when DOM loaded
-document.addEventListener("DOMContentLoaded", initApp);
