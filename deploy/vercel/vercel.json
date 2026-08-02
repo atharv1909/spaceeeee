@@ -6,8 +6,8 @@
       "destination": "https://mod-pork-healthy-optics.trycloudflare.com/api/$1"
     },
     {
-      "source": "/ws/(.*)",
-      "destination": "https://mod-pork-healthy-optics.trycloudflare.com/ws/$1"
+      "source": "/ws(.*)",
+      "destination": "https://mod-pork-healthy-optics.trycloudflare.com/ws$1"
     }
   ]
 }
