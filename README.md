@@ -1,3 +1,11 @@
+---
+title: Spacecraft Autonomy Backend
+emoji: 🛰️
+sdk: docker
+app_port: 8080
+pinned: false
+---
+
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,25:1a0a2e,50:2d1b4e,75:4a1942,100:ff69b4&height=250&section=header&text=🌸%20SYMBIOSIS%20🛸&fontSize=45&fontColor=FFB7C5&fontAlignY=35&desc=Synchronous%20Multi-modal%20Belief%20Integration%20with%20Orbital%20Self-Interpretability&descSize=16&descColor=00F0FF&descAlignY=55&animation=twinkling" width="100%" />
 </div>
