@@ -3,11 +3,11 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://injection-foo-caused-payday.trycloudflare.com/api/$1"
+      "destination": "https://mod-pork-healthy-optics.trycloudflare.com/api/$1"
     },
     {
       "source": "/ws/(.*)",
-      "destination": "https://injection-foo-caused-payday.trycloudflare.com/ws/$1"
+      "destination": "https://mod-pork-healthy-optics.trycloudflare.com/ws/$1"
     }
   ]
 }
